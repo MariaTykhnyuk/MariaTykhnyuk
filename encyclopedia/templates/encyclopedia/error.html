@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Ошибка
+{% endblock %}
+
+{% block body %}
+    <h1>Ошибка</h1>
+
+    <p>{{ message }}</p>
+
+    <a href="{% url 'index' %}">
+    Вернуться на главную
+</a>
+
+{% endblock %}

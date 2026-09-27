@@ -1,0 +1,21 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+{% if isFound %}
+<form action="{% url 'edit' title %}" method = "get">
+{% csrf_token %}
+    <button>Edit page</button>
+</form>
+
+{{content |safe}}
+{% else %}
+<h1>Error 404</h1>
+<p>
+    Page Not Found
+</p>
+{% endif %}
+{% endblock %}

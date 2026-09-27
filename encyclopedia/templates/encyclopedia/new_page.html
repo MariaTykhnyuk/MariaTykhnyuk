@@ -1,0 +1,53 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+    <h1>Create New Page</h1>
+
+    {% if error %}
+        <p style="color: red;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <form action="{% url 'new_page' %}" method="post">
+        {% csrf_token %}
+
+        <div>
+            <label for="title">Title:</label>
+        </div>
+
+        <div>
+            <input
+                id="title"
+                type="text"
+                name="title"
+                value="{{ title|default:'' }}"
+                placeholder="Page title"
+            >
+        </div>
+
+        <br>
+
+        <div>
+            <label for="content">Markdown content:</label>
+        </div>
+
+        <div>
+            <textarea
+                id="content"
+                name="content"
+                rows="15"
+                cols="80"
+                placeholder="Enter Markdown content"
+            >{{ content|default:'' }}</textarea>
+        </div>
+
+        <br>
+
+        <button type="submit">Save Page</button>
+    </form>
+{% endblock %}
